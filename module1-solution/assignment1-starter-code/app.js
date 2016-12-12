@@ -11,11 +11,11 @@
      $scope.dish = "";
      $scope.message = "";
 
-     $scope.checkLunch = function() {
-       $scope.message = checkLunch($scope.dish);
+     $scope.checkDish = function() {
+       $scope.message = checkDish($scope.dish);
      };
 
-     function checkLunch(dish) {
+     function checkDish(dish) {
        if (dish === "") {
          return "Please enter data first";
        }
