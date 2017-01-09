@@ -1,0 +1,91 @@
+<div class='container'>
+<fieldset ng-controller="SignUpController as signupCtrl">
+  <legend class='header'>NewsLetter Registration</legend>
+  <form name='regForm' novalidate>
+
+    <div class="form-group" ng-class='
+      {"has-success": !regForm.firstname.$error.required && 
+        regForm.firstname.$touched,
+        "has-error": regForm.firstname.$error.required && regForm.firstname.$touched}'> 
+      <label class="control-label" for="firstname">First Name</label>
+      <input type="text" name="firstname" placeholder="Write your first name here"
+        ng-model="signupCtrl.user.firstname"
+        required class='form-control' id='firstname'>
+      <span class="help-block" 
+        ng-if="regForm.firstname.$error.required && regForm.firstname.$touched">
+        First name is required.
+      </span>
+    </div>
+
+    <div class="form-group" ng-class='
+      {"has-success": !regForm.lastname.$error.required &&
+        regForm.lastname.$touched,
+        "has-error": regForm.lastname.$error.required && regForm.lastname.$touched}'> 
+      <label class="control-label" for="lastname">Last Name</label>
+      <input type="text" name="lastname" placeholder="Write your last name here"
+        ng-model="signupCtrl.user.lastname"
+        required class='form-control' id='lastname'>
+      <span class="help-block" 
+        ng-if="regForm.lastname.$error.required && regForm.lastname.$touched">
+        Last name is required.
+      </span>
+    </div>
+    <br>
+
+    <div class="form-group" ng-class='
+      {"has-success": !regForm.email.$invalid && regForm.email.$touched,
+       "has-error": regForm.email.$invalid && regForm.email.$touched}'>
+      <label class="control-label" for="email">Email</label> 
+      <input type="email" name="email" placeholder="Write your email here"
+      ng-model="signupCtrl.user.email"
+      required class='form-control' id='email'>
+      <span class="help-block" 
+        ng-if="regForm.email.$invalid && regForm.email.$touched">
+        Must be a valid email address: handle@domain format
+      </span>
+    </div>
+    <br>
+
+    <div class="form-group" ng-class='
+      {"has-success": !regForm.phone.$invalid && regForm.phone.$touched,
+       "has-error": regForm.phone.$invalid && regForm.phone.$touched}'> 
+      <label class="control-label" for="phone">Phone Number</label>
+      <input type="text" name="phone" placeholder="Phone ###-###-####"
+          ng-model="signupCtrl.user.phone"
+          pattern="(\d{3})-(\d{3})-(\d{4})"
+          required 
+          class='form-control' id='phone'>
+      <span class="help-block" 
+        ng-if="regForm.phone.$invalid && regForm.phone.$touched">
+        Phone must be in the format ###-###-####.
+      </span>
+    </div>
+    <br>
+
+    <div class="form-group" ng-class='
+      {"has-success": !regForm.short_name.$invalid && 
+        regForm.short_name.$touched,
+        "has-error": regForm.short_name.$invalid && 
+        regForm.short_name.$touched}'> 
+      <label class="control-label" for="short_name">Favorite dish Menu Number</label>
+      <input type="text" name="short_name" placeholder="Write the menu number here, e.g. L1"
+        ng-model="signupCtrl.user.short_name"
+        class='form-control' id='short_name'
+        required 
+        dish-available>
+      <span class="help-block" 
+        ng-if="regForm.short_name.$invalid && regForm.short_name.$touched">
+        No such menu number exists. Try again.
+      </span>
+    </div>
+    <br>
+
+    <button class='btn btn-lg primary submit' ng-disabled="regForm.$invalid" ng-click="signupCtrl.submit()">
+      Sign Up
+    </button>
+    <span ng-show="signupCtrl.submitted && !regForm.$invalid">
+      Your information has been saved.
+    </span>
+  </form>
+</fieldset>
+</div>

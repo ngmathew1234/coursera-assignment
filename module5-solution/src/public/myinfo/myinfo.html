@@ -1,0 +1,25 @@
+<div class='container'>
+  <div ng-if='!myinfoCtrl.loggedIn'>
+    <h1>
+      Not Signed Up Yet. 
+      <a ui-sref='public.sign-up'> Sign up Now!</a> 
+    </h1>
+  </div>
+  <div ng-if='myinfoCtrl.loggedIn'>
+    <h1>
+      Hello 
+      <strong>{{myinfoCtrl.user.firstname}} {{myinfoCtrl.user.lastname}}</strong>
+    </h1>
+    <h2>
+      We'll call you at 
+      <strong>{{myinfoCtrl.user.phone}}</strong>
+    </h2>
+    <h2>Or email you at <strong>{{myinfoCtrl.user.email}}</strong></h2>
+    <h2>Just to see if you'd like to buy your favorite dish:</h2>
+    <br>
+    <menu-item menu-item="myinfoCtrl.menuItem">
+    </menu-item> 
+  </div>
+
+
+</div>
